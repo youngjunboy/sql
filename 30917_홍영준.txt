@@ -1,0 +1,21 @@
+create table eta
+as select * from jobs;
+
+select * from eta;
+
+insert into eta
+(job_id,job_title,min_salary,max_salary)
+values('AD_PRES','KING',20000,40000);
+
+select * from eta;
+
+insert into eta
+values('FD_ABD','QUEEN',10000,125000);
+
+select * from eta;
+
+insert into eta
+values('SAR_ENG','manager',NULL,NULL);
+
+select * from eta;
+
