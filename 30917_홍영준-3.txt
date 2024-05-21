@@ -1,0 +1,23 @@
+create table you
+as select * from jobs;
+
+update you
+set min_salary = 9870;
+
+select * from you;
+
+update you
+set min_salary = 7770
+where job_title like '%Manager';
+
+select * from you;
+
+delete from you
+where job_title like '%Manager';
+
+select * from you;
+
+delete from you;
+
+select * from you;
+
