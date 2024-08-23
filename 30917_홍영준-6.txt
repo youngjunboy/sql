@@ -1,0 +1,60 @@
+  create table 고객(
+   고객번호 varchar(30)  not null,
+   이름 varchar(10)  not null,
+   비밀번호 varchar(10)  not null,
+   primary key(고객번호));
+
+ CREATE TABLE 주문 ( 
+주문번호 varchar(10) NOT NULL,
+ 고객번호 varchar(10) NOT NULL,
+ 주문일 varchar(18) NOT NULL,
+ 주문가격 varchar(18) NOT NULL,
+ 결제금액 varchar(18) NOT NULL,
+ PRIMARY KEY (주문번호),
+ FOREIGN KEY (고객번호) REFERENCES 고객 (고객번호));
+
+INSERT INTO 고객 VALUES ('C07', '홍만호', '1234');
+INSERT INTO 고객 VALUES ('C02', '최민수', 'y234');
+INSERT INTO 고객 VALUES ('C03', '여인구', 'uu94');
+INSERT INTO 고객 VALUES  ('C04', '김성팔', 'pas1');
+INSERT INTO 고객 VALUES  ('C05', '이왕규', 'p234');
+
+INSERT INTO 주문 VALUES  ('O103', 'C04', '1207', 1000, 1000);
+INSERT INTO 주문 VALUES  ('O104', 'C03', '1207', 5500, 550);
+INSERT INTO 주문 VALUES ('O105', 'C07', '0117', 8500, 850);
+INSERT INTO 주문 VALUES ('O106', 'C02', '0518', 2300, 230);
+INSERT INTO 주문 VALUES  ('O107', 'C04', '0721', 5000, 50);
+INSERT INTO 주문 VALUES  ('O109', 'C02', '0125', 4500, 450);
+INSERT INTO 주문 VALUES ('O110', 'C03', '0430', 9000, 90);
+
+col 고객번호 format a10;
+col 주문번호 format a10;
+col 주문일 format a10;
+col 주문가격 format a10;
+col 결제금액 format a10;
+
+select 고객.*,주문.* from 고객,주문; // 두 테이블이 고객번호
+의해 큰 테이블의 행을 기준으로 출력됨- 조건이 없다면 쓸모없는 데이터
+
+조인한 테이블에서 조건을 주어서 출력해보기
+
+select 고객.고객번호, 고객.이름, 주문.주문번호, 주문.주문가격
+from 고객, 주문
+where 고객.고객번호 = 주문.고객번호;
+
+위 조인 복사해서 new라는 테이블 복사생성하여 출력
+create table NEW as select 고객.고객번호, 고객.이름, 주문.주문번호, 주문.주문가격
+from 고객,주문
+where 고객.고객번호 = 주문.고객번호; 
+
+'NEW' 테이블에서 주문가격이 5000이상인 자료의 '고객번호'와 '이름'을 출력하시오.
+select 고객번호,이름 from NEW
+where 주문가격>=5000;
+
+'NEW' 테이블에서  이름이 '김성팔'인 자료를 출력해보세요.
+select * from NEW
+where 이름 = '김성팔';
+
+'고객' 테이블에서 '김성팔'의 이름과 비밀번호 열만 출력하세요.
+select 이름,비밀번호 from 고객
+where 이름 = '김성팔';
