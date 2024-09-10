@@ -1,0 +1,29 @@
+문제 3-4> new 테이블에 이름, 주문가격, 9000 이상이면 'vvip', 8000 이상이면 'vip', 나머지는 '일반회원'으로 출력되는 '고객등급'열을 casse 조건문으로 작성하시오.
+
+답:
+SELECT 이름, 주문가격,
+    CASE
+        WHEN 주문가격 >= 9000 THEN 'vvip'
+        WHEN 주문가격 >= 8000 THEN 'vip'
+		ELSE '일반회원'
+END AS 고객등급
+FROM new;
+
+문제 3-5> new 테이블에 이름, 주문가격, 10000 이상이면 'vvip', 8700 이상이면 'vip', 8000 이상이면 'Gold', 6000 이상이면 'Silver', 3000 이상이면 '일반회원', 나머지는 '새싹회원'으로 출력되는 '고객등급'열을 casse 조건문으로 작성하시오.
+
+답:
+SELECT 이름, 주문가격,
+    CASE
+        WHEN 주문가격 >= 10000 THEN 'vvip'
+        WHEN 주문가격 >= 8700 THEN 'vip'
+        WHEN 주문가격 >= 8000 THEN 'Gold'
+        WHEN 주문가격 >= 6000 THEN 'Silver'
+        WHEN 주문가격 >= 3000 THEN '일반회원'
+		ELSE '새싹회원'
+END AS 고객등급
+FROM new;
+
+insert into new values('A1', '홍영준', 100000);
+insert into new values('A2', '양민석', 200000);
+
+
